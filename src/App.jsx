@@ -21,16 +21,15 @@ const travelerShowcase = [
   {
     id: 'map',
     img: screenMap,
-    title: '지도 · 주변 가맹점',
+    title: '실시간 지도',
     desc: (
       <>
-        위치 기반으로 제휴 매장을 찾고,
+        가맹점·보물상자를 지도에 표시해요.
         <br />
-        보물상자 등 지도상의 포인트를
-        함께 확인해요!
+        실시간 위치로 근처 매장과 보물상자를 찾아요.
       </>
     ),
-    alt: '지도 · 주변 가맹점 화면',
+    alt: '실시간 지도 — 가맹점·보물상자 화면',
   },
   {
     id: 'treasure',
@@ -38,10 +37,9 @@ const travelerShowcase = [
     title: '보물상자',
     desc: (
       <>
-        망치로 보물상자를 열어 보상 이벤트에 참여해요!
+        망치로 보물상자를 열고
         <br />
-        로또 여행권 이용 시 정책에 따라
-        번호 획득 등이 연동돼요.
+        경품 뽑기·이벤트 보상을 받을 수 있어요.
       </>
     ),
     alt: '보물상자 화면',
@@ -52,10 +50,9 @@ const travelerShowcase = [
     title: '로또함',
     desc: (
       <>
-        방문 인증으로 번호를 수집하고,
-        6개를 완성해 복권을 받아요!
+        로또 번호를 수집하고, 6개를 완성해 복권을 받아요.
         <br />
-        회차별 당청금 추첨일과 보관함 기능을 제공해요.
+        회차별 당첨금과 추첨일을 확인할 수 있어요.
       </>
     ),
     alt: '로또함 화면',
@@ -66,41 +63,41 @@ const merchantShowcase = [
   {
     id: 'map',
     img: screenQr,
-    title: '타켓 스캔',
+    title: 'QR 스캔',
     desc: (
       <>
-        여행객용 앱의 QR 바코드를 스캔해
+        여행객 앱의 QR을 스캔해
         <br />
-        유효기간・중복 사용을 검증하고, 혜택을 제공해요.
+        유효기간과 중복 사용을 확인하고 혜택을 제공해요.
       </>
     ),
-    alt: '지도 · 주변 가맹점 화면',
+    alt: 'QR 스캔 화면',
   },
   {
     id: 'treasure',
     img: screenManage,
-    title: '매장・회원관리',
+    title: 'MY',
     desc: (
       <>
-        가맹점 정보・혜택을 등록/수정하고,
+        MY에서 가맹점 정보를 조회하고
         <br />
-        고객 티켓 보유 현황을 조회할 수 있어요.
+        QR 스캔도 할 수 있어요.
       </>
     ),
-    alt: '보물상자 화면',
+    alt: 'MY — 가맹점 정보·QR 화면',
   },
   {
     id: 'lotto',
     img: screenDashboard,
-    title: '통계・대시보드',
+    title: '통계 · 대시보드',
     desc: (
       <>
-        방문・판매・트래픽 등 지표를 한 화면에서
+        방문·매출 등 지표를 한눈에 보고
         <br />
-        확인하고 운영 현황을 점검할 수 있어요.
+        운영 현황을 점검해요.
       </>
     ),
-    alt: '로또함 화면',
+    alt: '통계 · 대시보드 화면',
   },
 ]
 
@@ -301,9 +298,9 @@ export default function App() {
                 <img className="hero__logo" src={logoWhite} alt="썸티요" />
               </p>
               <p className="hero__lead hero__copy-in hero__copy-in--4">
-                여행객용 앱과 가맹점주용 앱은 별도로 제공돼요.
+                여행객용·가맹점주용 앱은 따로 제공됩니다.
                 <br />
-                스토어에서 용도에 맞는 앱을 선택해 설치해 주세요.
+                스토어에서 맞는 앱을 골라 설치해 주세요.
               </p>
               <StoreButtons className="hero__stores" variant="ghost" />
               <nav className="hero__anchors" aria-label="앱 소개 섹션">
@@ -342,8 +339,11 @@ export default function App() {
             iconAlt="썸티요 앱 아이콘"
           >
             <div className="point-banner__desc">
-              <p>주변 가맹점 · 지도, 여행권 바코드, 로또함 등</p>
-              <p>여행 · 혜택 이용에 필요한 기능을 제공해요.</p>
+              <p>
+                지도·보물상자·로또·여행권까지
+                <br />
+                여행 혜택을 한 앱에서 이용해요.
+              </p>
             </div>
           </PointBanner>
           <div className="section-block__body">
@@ -361,9 +361,9 @@ export default function App() {
           >
             <div className="point-banner__desc">
               <p>
-                여행객용 앱과는 별도로 설치하며
+                스캔·통계·내 매장까지
                 <br />
-                스캔 · 통계 · 매장 · 혜택 설정을 제공해요.
+                가맹점 운영을 한 앱에서 확인해요.
               </p>
             </div>
           </PointBanner>
@@ -381,16 +381,16 @@ export default function App() {
             앱 다운로드
           </h2>
           <p className="cta-parallax__lead">
-            여행객과 가맹점주는 앱이 달라요.
+            여행객용과 가맹점주용은 앱이 서로 달라요.
             <br />
-            해당하는 스토어 버튼으로 이동해 설치해 주세요.
+            해당 스토어 버튼으로 설치해 주세요.
           </p>
           <div className="cta-parallax__grid">
             <article className="cta-glass">
               <div className="cta-glass__head">
                 <div className="cta-glass__copy">
                   <h3 className="cta-glass__title">여행객용 썸타요</h3>
-                  <p className="cta-glass__sub">혜택 · 지도 · 여행권 · 로또함</p>
+                  <p className="cta-glass__sub">지도·보물상자·여행권·로또함</p>
                 </div>
                 <img
                   className="cta-glass__icon"
@@ -406,7 +406,7 @@ export default function App() {
               <div className="cta-glass__head">
                 <div className="cta-glass__copy">
                   <h3 className="cta-glass__title">가맹점주용 썸타요</h3>
-                  <p className="cta-glass__sub">스캔 · 통계 · 매장 관리</p>
+                  <p className="cta-glass__sub">스캔·통계·내 매장</p>
                 </div>
                 <img
                   className="cta-glass__icon"
