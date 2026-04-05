@@ -13,10 +13,6 @@ import screenDashboard from './assets/image_main06.png'
 import bannerBg from './assets/banner.png'
 import appIconUser from './assets/ico_logo.png'
 import appIconMerchant from './assets/ico_logo_merchant.png'
-import appstoreIcon from './assets/ico_appstore.svg'
-import appstoreIconWhite from './assets/ico_appstore_W.svg'
-import gpIcon from './assets/ico_googleplay.svg'
-
 const travelerShowcase = [
   {
     id: 'map',
@@ -151,7 +147,14 @@ function Reveal({ as: As = 'div', className = '', delay = 0, style, children, ..
   return createElement(As, { ref, className: merged, style: mergedStyle, ...rest }, children)
 }
 
-function StoreButtons({ className = '', variant = 'light' }) {
+/*
+  앱 스토어 출시 시 여기서 할 일:
+  - webHref prop 제거 · 아래 return의 단일 <a>(서비스 이용하기) 제거
+  - 이 블록 안 주석 해제해 Play / App Store 두 버튼 복구
+  - 파일 상단 import 복구: appstoreIcon, appstoreIconWhite, gpIcon
+  - 히어로·CTA에서 StoreButtons 호출 시 webHref 제거 (호출부 주석 참고)
+*/
+function StoreButtons({ className = '', variant = 'light', webHref }) {
   const mod =
     variant === 'dark'
       ? 'store-buttons--dark'
@@ -160,29 +163,31 @@ function StoreButtons({ className = '', variant = 'light' }) {
         : variant === 'cta'
           ? 'store-buttons--cta'
           : ''
-  const appStoreSrc = variant === 'ghost' ? appstoreIconWhite : appstoreIcon
+  const openNewTab = webHref && !webHref.startsWith('#')
   return (
     <div className={`store-buttons ${mod} ${className}`.trim()}>
+      <a
+        className="store-buttons__btn"
+        href={webHref}
+        {...(openNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        서비스 이용하기
+      </a>
+      {/*
+      앱 출시 후: 위 a 제거 후 사용. import 복구:
+        import appstoreIcon from './assets/ico_appstore.svg'
+        import appstoreIconWhite from './assets/ico_appstore_W.svg'
+        import gpIcon from './assets/ico_googleplay.svg'
+      const appStoreSrc = variant === 'ghost' ? appstoreIconWhite : appstoreIcon
       <a className="store-buttons__btn" href="#" aria-label="Google Play에서 다운로드">
-        <img
-          className="store-buttons__store-ico"
-          src={gpIcon}
-          alt=""
-          width={20}
-          height={20}
-        />
+        <img className="store-buttons__store-ico" src={gpIcon} alt="" width={20} height={20} />
         Google Play
       </a>
       <a className="store-buttons__btn" href="#" aria-label="App Store에서 다운로드">
-        <img
-          className="store-buttons__store-ico"
-          src={appStoreSrc}
-          alt=""
-          width={20}
-          height={20}
-        />
+        <img className="store-buttons__store-ico" src={appStoreSrc} alt="" width={20} height={20} />
         App Store
       </a>
+      */}
     </div>
   )
 }
@@ -301,8 +306,17 @@ export default function App() {
                 여행객용·가맹점주용 앱은 따로 제공됩니다.
                 <br />
                 스토어에서 맞는 앱을 골라 설치해 주세요.
+                {/*
+                앱 출시 후 히어로 리드 복구:
+                여행객용·가맹점주용 앱은 따로 제공됩니다.
+                스토어에서 맞는 앱을 골라 설치해 주세요.
+                */}
               </p>
+              <StoreButtons className="hero__stores" variant="ghost" webHref="#download" />
+              {/*
+              앱 출시 후: 위 줄에서 webHref만 제거
               <StoreButtons className="hero__stores" variant="ghost" />
+              */}
               <nav className="hero__anchors" aria-label="앱 소개 섹션">
                 <a className="hero__anchor" href="#user-app">
                   여행객용 앱 소개
@@ -381,9 +395,14 @@ export default function App() {
             앱 다운로드
           </h2>
           <p className="cta-parallax__lead">
-            여행객용과 가맹점주용은 앱이 서로 달라요.
+            앱은 준비 중이에요.
             <br />
+            지금은 아래 웹으로 이용해 주세요.
+            {/*
+            앱 출시 후 CTA 리드 복구:
+            여행객용과 가맹점주용은 앱이 서로 달라요.
             해당 스토어 버튼으로 설치해 주세요.
+            */}
           </p>
           <div className="cta-parallax__grid">
             <article className="cta-glass">
@@ -400,7 +419,15 @@ export default function App() {
                   height={72}
                 />
               </div>
+              <StoreButtons
+                className="cta-glass__stores"
+                variant="cta"
+                webHref="https://user.sumtayo.co.kr"
+              />
+              {/*
+              앱 출시 후: webHref 제거 (웹 URL https://user.sumtayo.co.kr 참고용)
               <StoreButtons className="cta-glass__stores" variant="cta" />
+              */}
             </article>
             <article className="cta-glass">
               <div className="cta-glass__head">
@@ -416,7 +443,15 @@ export default function App() {
                   height={72}
                 />
               </div>
+              <StoreButtons
+                className="cta-glass__stores"
+                variant="cta"
+                webHref="https://partner.sumtayo.co.kr"
+              />
+              {/*
+              앱 출시 후: webHref 제거 (웹 URL https://partner.sumtayo.co.kr 참고용)
               <StoreButtons className="cta-glass__stores" variant="cta" />
+              */}
             </article>
           </div>
         </div>
