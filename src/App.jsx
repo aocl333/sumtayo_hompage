@@ -463,7 +463,7 @@ export default function App() {
             <p className="footer__links">
               <a href="#">이용약관</a>
               <span className="footer__sep"> </span>
-              <a href="#">개인정보처리방침</a>
+              <a href="/privacy-policy.html">개인정보처리방침</a>
             </p>
             <p className="footer__copy">© {new Date().getFullYear()} 썸타요. All rights reserved.</p>
           </div>
