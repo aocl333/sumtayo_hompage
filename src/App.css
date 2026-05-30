@@ -669,6 +669,47 @@
   color: #d1d5db;
 }
 
+.footer__company {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  line-height: 1.65;
+  color: #9ca3af;
+}
+
+.footer__company-name {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.footer__company-info {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+
+.footer__company-info + .footer__company-info {
+  margin-top: 0.15rem;
+}
+
+.footer__company-info a {
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.footer__company-info a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.footer__dot {
+  color: #d1d5db;
+}
+
 @media (max-width: 900px) {
   .hero {
     padding-top: clamp(2.25rem, 8vw, 3.25rem);
